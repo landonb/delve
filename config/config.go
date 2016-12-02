@@ -128,7 +128,11 @@ func createConfigPath() error {
 func GetConfigFilePath(file string) (string, error) {
 	usr, err := user.Current()
 	if err != nil {
+		fmt.Printf("GetConfigFilePath: user.Current() failed: %v.", err)
 		return "", err
 	}
+	fmt.Printf("GetConfigFilePath: usr.HomeDir: %v.", usr.HomeDir)
+	fmt.Printf("GetConfigFilePath: configDir: %v.", configDir)
+	fmt.Printf("GetConfigFilePath: file: %v.", file)
 	return path.Join(usr.HomeDir, configDir, file), nil
 }
