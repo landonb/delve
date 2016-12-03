@@ -1,6 +1,6 @@
 .DEFAULT_GOAL=test
 UNAME=$(shell uname)
-PREFIX=github.com/derekparker/delve
+PREFIX=github.com/landonb/delve
 GOVERSION=$(shell go version)
 BUILD_SHA=$(shell git rev-parse HEAD)
 
@@ -35,7 +35,7 @@ endif
 endif
 
 build: check-cert
-	go build $(BUILD_FLAGS) github.com/derekparker/delve/cmd/dlv
+	go build $(BUILD_FLAGS) github.com/landonb/delve/cmd/dlv
 ifdef DARWIN
 ifneq "$(GOBIN)" ""
 	codesign -s "$(CERT)"  $(GOBIN)/dlv
@@ -45,7 +45,7 @@ endif
 endif
 
 install: check-cert
-	go install $(BUILD_FLAGS) github.com/derekparker/delve/cmd/dlv
+	go install $(BUILD_FLAGS) github.com/landonb/delve/cmd/dlv
 ifdef DARWIN
 ifneq "$(GOBIN)" ""
 	codesign -s "$(CERT)"  $(GOBIN)/dlv
