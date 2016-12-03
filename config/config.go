@@ -38,6 +38,8 @@ type Config struct {
 func LoadConfig() *Config {
 	err := createConfigPath()
 	if err != nil {
+// FIXME
+fmt.Printf("BUSTED")
 		fmt.Printf("Could not create config directory: %v.", err)
 		return nil
 	}
