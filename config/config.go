@@ -132,8 +132,7 @@ func GetConfigFilePath(file string) (string, error) {
 	if err != nil {
 		fmt.Printf("GetConfigFilePath: user.Current() failed: %+v\n", err)
 		configFilePath = path.Join("app", configDir, file)
-	}
-	else {
+	} else {
 		fmt.Printf("GetConfigFilePath: usr.HomeDir: %+v\n", usr.HomeDir)
 		configFilePath = path.Join(usr.HomeDir, configDir, file)
 	}
