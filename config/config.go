@@ -38,8 +38,6 @@ type Config struct {
 func LoadConfig() *Config {
 	err := createConfigPath()
 	if err != nil {
-// FIXME
-fmt.Printf("BUSTED\n")
 		fmt.Printf("Could not create config directory: %+v\n", err)
 		return nil
 	}
@@ -131,15 +129,14 @@ func GetConfigFilePath(file string) (string, error) {
 	configFilePath := ""
 	usr, err := user.Current()
 	if err != nil {
-		fmt.Printf("GetConfigFilePath: user.Current() failed: %+v\n", err)
+		// Error on OpenShift is, e.g.,
+		//   "user: unknown userid 1000090000"
 		// [lb] apologizes for the encoded forward slash, but
 		// I could not find anything like Python's path.sep.
 		configFilePath = path.Join("/app", configDir, file)
 	} else {
-		fmt.Printf("GetConfigFilePath: usr.HomeDir: %+v\n", usr.HomeDir)
 		configFilePath = path.Join(usr.HomeDir, configDir, file)
 	}
-	fmt.Printf("GetConfigFilePath: configFilePath: %+v\n", configFilePath)
 	return configFilePath, nil
 }
 
