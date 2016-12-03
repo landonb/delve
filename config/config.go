@@ -128,6 +128,7 @@ func createConfigPath() error {
 
 // GetConfigFilePath gets the full path to the given config file name.
 func GetConfigFilePath(file string) (string, error) {
+	configFilePath := ""
 	usr, err := user.Current()
 	if err != nil {
 		fmt.Printf("GetConfigFilePath: user.Current() failed: %+v\n", err)
