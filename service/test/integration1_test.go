@@ -11,13 +11,13 @@ import (
 	"testing"
 	"time"
 
-	protest "github.com/derekparker/delve/proc/test"
+	protest "github.com/landonb/delve/proc/test"
 
-	"github.com/derekparker/delve/proc"
-	"github.com/derekparker/delve/service"
-	"github.com/derekparker/delve/service/api"
-	"github.com/derekparker/delve/service/rpc1"
-	"github.com/derekparker/delve/service/rpccommon"
+	"github.com/landonb/delve/proc"
+	"github.com/landonb/delve/service"
+	"github.com/landonb/delve/service/api"
+	"github.com/landonb/delve/service/rpc1"
+	"github.com/landonb/delve/service/rpccommon"
 )
 
 func withTestClient1(name string, t *testing.T, fn func(c *rpc1.RPCClient)) {

@@ -18,8 +18,8 @@ import (
 
 	sys "golang.org/x/sys/unix"
 
-	"github.com/derekparker/delve/dwarf/frame"
-	"github.com/derekparker/delve/dwarf/line"
+	"github.com/landonb/delve/dwarf/frame"
+	"github.com/landonb/delve/dwarf/line"
 	"golang.org/x/debug/elf"
 )
 

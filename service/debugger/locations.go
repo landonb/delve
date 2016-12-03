@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/derekparker/delve/proc"
-	"github.com/derekparker/delve/service/api"
+	"github.com/landonb/delve/proc"
+	"github.com/landonb/delve/service/api"
 )
 
 const maxFindLocationCandidates = 5

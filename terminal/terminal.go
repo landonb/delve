@@ -12,8 +12,8 @@ import (
 
 	"github.com/peterh/liner"
 
-	"github.com/derekparker/delve/config"
-	"github.com/derekparker/delve/service"
+	"github.com/landonb/delve/config"
+	"github.com/landonb/delve/service"
 )
 
 const (

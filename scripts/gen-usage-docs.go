@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/derekparker/delve/cmd/dlv/cmds"
+	"github.com/landonb/delve/cmd/dlv/cmds"
 	"github.com/spf13/cobra/doc"
 )
 

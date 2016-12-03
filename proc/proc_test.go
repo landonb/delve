@@ -17,7 +17,7 @@ import (
 	"testing"
 	"time"
 
-	protest "github.com/derekparker/delve/proc/test"
+	protest "github.com/landonb/delve/proc/test"
 )
 
 var normalLoadConfig = LoadConfig{true, 1, 64, 64, -1}

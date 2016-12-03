@@ -12,13 +12,13 @@ import (
 	"testing"
 	"time"
 
-	protest "github.com/derekparker/delve/proc/test"
+	protest "github.com/landonb/delve/proc/test"
 
-	"github.com/derekparker/delve/proc"
-	"github.com/derekparker/delve/service"
-	"github.com/derekparker/delve/service/api"
-	"github.com/derekparker/delve/service/rpc2"
-	"github.com/derekparker/delve/service/rpccommon"
+	"github.com/landonb/delve/proc"
+	"github.com/landonb/delve/service"
+	"github.com/landonb/delve/service/api"
+	"github.com/landonb/delve/service/rpc2"
+	"github.com/landonb/delve/service/rpccommon"
 )
 
 var normalLoadConfig = api.LoadConfig{true, 1, 64, 64, -1}

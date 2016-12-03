@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/derekparker/delve/terminal"
+	"github.com/landonb/delve/terminal"
 )
 
 func main() {
-	fh, err := os.Create(os.ExpandEnv("$GOPATH/src/github.com/derekparker/delve/Documentation/cli/README.md"))
+	fh, err := os.Create(os.ExpandEnv("$GOPATH/src/github.com/landonb/delve/Documentation/cli/README.md"))
 	if err != nil {
 		log.Fatalf("could not create README.md: %v", err)
 	}

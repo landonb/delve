@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"testing"
 
-	protest "github.com/derekparker/delve/proc/test"
-	"github.com/derekparker/delve/service/rpc2"
+	protest "github.com/landonb/delve/proc/test"
+	"github.com/landonb/delve/service/rpc2"
 )
 
 func assertNoError(err error, t testing.TB, s string) {
@@ -22,7 +22,7 @@ func assertNoError(err error, t testing.TB, s string) {
 
 func TestBuild(t *testing.T) {
 	const listenAddr = "localhost:40573"
-	cmd := exec.Command("go", "build", "github.com/derekparker/delve/cmd/dlv")
+	cmd := exec.Command("go", "build", "github.com/landonb/delve/cmd/dlv")
 	assertNoError(cmd.Run(), t, "go build")
 	wd, _ := os.Getwd()
 	dlvbin := filepath.Join(wd, "dlv")

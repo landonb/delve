@@ -12,8 +12,8 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/derekparker/delve/dwarf/op"
-	"github.com/derekparker/delve/dwarf/reader"
+	"github.com/landonb/delve/dwarf/op"
+	"github.com/landonb/delve/dwarf/reader"
 	"golang.org/x/debug/dwarf"
 )
 

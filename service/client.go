@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/derekparker/delve/service/api"
+	"github.com/landonb/delve/service/api"
 )
 
 // Client represents a debugger service client. All client methods are

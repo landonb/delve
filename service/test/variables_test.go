@@ -7,10 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/derekparker/delve/proc"
-	"github.com/derekparker/delve/service/api"
+	"github.com/landonb/delve/proc"
+	"github.com/landonb/delve/service/api"
 
-	protest "github.com/derekparker/delve/proc/test"
+	protest "github.com/landonb/delve/proc/test"
 )
 
 var pnormalLoadConfig = proc.LoadConfig{true, 1, 64, 64, -1}
@@ -788,20 +788,20 @@ func TestPackageRenames(t *testing.T) {
 		{"amap", true, "interface {}(map[go/ast.BadExpr]net/http.Request) [{From: 2, To: 3}: *{Method: \"othermethod\", …", "", "interface {}", nil},
 
 		// Package name that doesn't match import path
-		{"iface3", true, `interface {}(*github.com/derekparker/delve/_fixtures/vendor/dir0/renamedpackage.SomeType) *{A: true}`, "", "interface {}", nil},
+		{"iface3", true, `interface {}(*github.com/landonb/delve/_fixtures/vendor/dir0/renamedpackage.SomeType) *{A: true}`, "", "interface {}", nil},
 
 		// Interfaces to anonymous types
 		{"amap2", true, "interface {}(*map[go/ast.BadExpr]net/http.Request) *[{From: 2, To: 3}: *{Method: \"othermethod\", …", "", "interface {}", nil},
-		{"dir0someType", true, "interface {}(*github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType) *{X: 3}", "", "interface {}", nil},
-		{"dir1someType", true, "interface {}(*github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType) *{X: 1, Y: 2}", "", "interface {}", nil},
-		{"amap3", true, "interface {}(map[github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType]github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType) [{X: 4}: {X: 5, Y: 6}, ]", "", "interface {}", nil},
-		{"anarray", true, `interface {}(*[2]github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType) *[{X: 1},{X: 2}]`, "", "interface {}", nil},
-		{"achan", true, `interface {}(chan github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType) chan github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType 0/0`, "", "interface {}", nil},
-		{"aslice", true, `interface {}(*[]github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType) *[{X: 3},{X: 4}]`, "", "interface {}", nil},
-		{"afunc", true, `interface {}(func(github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType, github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType)) main.main.func1`, "", "interface {}", nil},
-		{"astruct", true, `interface {}(*struct { A github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType; B github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType }) *{A: github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType {X: 1, Y: 2}, B: github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType {X: 3}}`, "", "interface {}", nil},
-		{"astruct2", true, `interface {}(*struct { github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType; X int }) *{github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType: github.com/derekparker/delve/_fixtures/vendor/dir1/pkg.SomeType {X: 1, Y: 2}, X: 10}`, "", "interface {}", nil},
-		{"iface2iface", true, `interface {}(*interface { AMethod(int) int; AnotherMethod(int) int }) **github.com/derekparker/delve/_fixtures/vendor/dir0/pkg.SomeType {X: 4}`, "", "interface {}", nil},
+		{"dir0someType", true, "interface {}(*github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType) *{X: 3}", "", "interface {}", nil},
+		{"dir1someType", true, "interface {}(*github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType) *{X: 1, Y: 2}", "", "interface {}", nil},
+		{"amap3", true, "interface {}(map[github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType]github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType) [{X: 4}: {X: 5, Y: 6}, ]", "", "interface {}", nil},
+		{"anarray", true, `interface {}(*[2]github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType) *[{X: 1},{X: 2}]`, "", "interface {}", nil},
+		{"achan", true, `interface {}(chan github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType) chan github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType 0/0`, "", "interface {}", nil},
+		{"aslice", true, `interface {}(*[]github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType) *[{X: 3},{X: 4}]`, "", "interface {}", nil},
+		{"afunc", true, `interface {}(func(github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType, github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType)) main.main.func1`, "", "interface {}", nil},
+		{"astruct", true, `interface {}(*struct { A github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType; B github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType }) *{A: github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType {X: 1, Y: 2}, B: github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType {X: 3}}`, "", "interface {}", nil},
+		{"astruct2", true, `interface {}(*struct { github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType; X int }) *{github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType: github.com/landonb/delve/_fixtures/vendor/dir1/pkg.SomeType {X: 1, Y: 2}, X: 10}`, "", "interface {}", nil},
+		{"iface2iface", true, `interface {}(*interface { AMethod(int) int; AnotherMethod(int) int }) **github.com/landonb/delve/_fixtures/vendor/dir0/pkg.SomeType {X: 4}`, "", "interface {}", nil},
 	}
 
 	ver, _ := proc.ParseVersionString(runtime.Version())

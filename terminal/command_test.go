@@ -10,11 +10,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/derekparker/delve/proc/test"
-	"github.com/derekparker/delve/service"
-	"github.com/derekparker/delve/service/api"
-	"github.com/derekparker/delve/service/rpc2"
-	"github.com/derekparker/delve/service/rpccommon"
+	"github.com/landonb/delve/proc/test"
+	"github.com/landonb/delve/service"
+	"github.com/landonb/delve/service/api"
+	"github.com/landonb/delve/service/rpc2"
+	"github.com/landonb/delve/service/rpccommon"
 )
 
 type FakeTerminal struct {

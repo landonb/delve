@@ -14,12 +14,12 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/derekparker/delve/service"
-	"github.com/derekparker/delve/service/api"
-	"github.com/derekparker/delve/service/debugger"
-	"github.com/derekparker/delve/service/rpc1"
-	"github.com/derekparker/delve/service/rpc2"
-	"github.com/derekparker/delve/version"
+	"github.com/landonb/delve/service"
+	"github.com/landonb/delve/service/api"
+	"github.com/landonb/delve/service/debugger"
+	"github.com/landonb/delve/service/rpc1"
+	"github.com/landonb/delve/service/rpc2"
+	"github.com/landonb/delve/version"
 )
 
 // ServerImpl implements a JSON-RPC server that can switch between two

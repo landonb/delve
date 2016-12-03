@@ -4,7 +4,7 @@ import (
 	"testing"
 	"runtime"
 
-	"github.com/derekparker/delve/config"
+	"github.com/landonb/delve/config"
 )
 
 type tRule struct {
