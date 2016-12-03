@@ -39,13 +39,13 @@ func LoadConfig() *Config {
 	err := createConfigPath()
 	if err != nil {
 // FIXME
-fmt.Printf("BUSTED")
-		fmt.Printf("Could not create config directory: %v.", err)
+fmt.Printf("BUSTED\n")
+		fmt.Printf("Could not create config directory: %+v\n", err)
 		return nil
 	}
 	fullConfigFile, err := GetConfigFilePath(configFile)
 	if err != nil {
-		fmt.Printf("Unable to get config file path: %v.", err)
+		fmt.Printf("Unable to get config file path: %+v\n", err)
 		return nil
 	}
 
@@ -57,20 +57,20 @@ fmt.Printf("BUSTED")
 	defer func() {
 		err := f.Close()
 		if err != nil {
-			fmt.Printf("Closing config file failed: %v.", err)
+			fmt.Printf("Closing config file failed: %+v\n", err)
 		}
 	}()
 
 	data, err := ioutil.ReadAll(f)
 	if err != nil {
-		fmt.Printf("Unable to read config data: %v.", err)
+		fmt.Printf("Unable to read config data: %+v\n", err)
 		return nil
 	}
 
 	var c Config
 	err = yaml.Unmarshal(data, &c)
 	if err != nil {
-		fmt.Printf("Unable to decode config file: %v.", err)
+		fmt.Printf("Unable to decode config file: %+v\n", err)
 		return nil
 	}
 
@@ -80,18 +80,18 @@ fmt.Printf("BUSTED")
 func createDefaultConfig(path string) {
 	f, err := os.Create(path)
 	if err != nil {
-		fmt.Printf("Unable to create config file: %v.", err)
+		fmt.Printf("Unable to create config file: %+v\n", err)
 		return
 	}
 	defer func() {
 		err := f.Close()
 		if err != nil {
-			fmt.Printf("Closing config file failed: %v.", err)
+			fmt.Printf("Closing config file failed: %+v\n", err)
 		}
 	}()
 	err = writeDefaultConfig(f)
 	if err != nil {
-		fmt.Printf("Unable to write default configuration: %v.", err)
+		fmt.Printf("Unable to write default configuration: %+v\n", err)
 	}
 }
 
@@ -130,11 +130,13 @@ func createConfigPath() error {
 func GetConfigFilePath(file string) (string, error) {
 	usr, err := user.Current()
 	if err != nil {
-		fmt.Printf("GetConfigFilePath: user.Current() failed: %v.", err)
-		return "", err
+		fmt.Printf("GetConfigFilePath: user.Current() failed: %+v\n", err)
+// FIXME/2016-12-02: Trying this the hard way.
+		//return "", err
+		return "/app/.dlv/config.yml"
 	}
-	fmt.Printf("GetConfigFilePath: usr.HomeDir: %v.", usr.HomeDir)
-	fmt.Printf("GetConfigFilePath: configDir: %v.", configDir)
-	fmt.Printf("GetConfigFilePath: file: %v.", file)
+	fmt.Printf("GetConfigFilePath: usr.HomeDir: %+v\n", usr.HomeDir)
+	fmt.Printf("GetConfigFilePath: configDir: %+v\n", configDir)
+	fmt.Printf("GetConfigFilePath: file: %+v\n", file)
 	return path.Join(usr.HomeDir, configDir, file), nil
 }
