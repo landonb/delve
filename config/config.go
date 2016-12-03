@@ -135,7 +135,7 @@ func GetConfigFilePath(file string) (string, error) {
 // FIXME/2016-12-02: Trying this the hard way.
 		//return "", err
 //		return "/app/.dlv/config.yml", nil
-		return "/app/.dlv/" + string, nil
+		return "/app/.dlv/" + file, nil
 	}
 	fmt.Printf("GetConfigFilePath: usr.HomeDir: %+v\n", usr.HomeDir)
 	fmt.Printf("GetConfigFilePath: configDir: %+v\n", configDir)
