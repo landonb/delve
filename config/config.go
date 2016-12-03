@@ -132,11 +132,14 @@ func GetConfigFilePath(file string) (string, error) {
 	usr, err := user.Current()
 	if err != nil {
 		fmt.Printf("GetConfigFilePath: user.Current() failed: %+v\n", err)
-		configFilePath = path.Join("app", configDir, file)
+		// [lb] apologizes for the encoded forward slash, but
+		// I could not find anything like Python's path.sep.
+		configFilePath = path.Join("/app", configDir, file)
 	} else {
 		fmt.Printf("GetConfigFilePath: usr.HomeDir: %+v\n", usr.HomeDir)
 		configFilePath = path.Join(usr.HomeDir, configDir, file)
 	}
+	fmt.Printf("GetConfigFilePath: configFilePath: %+v\n", configFilePath)
 	return configFilePath, nil
 }
 
