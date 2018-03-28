@@ -1731,7 +1731,7 @@ func (v *Variable) loadInterface(recurseLevel int, loadData bool, cfg LoadConfig
 
 		t, err := parser.ParseExpr(typename)
 		if err != nil {
-			v.Unreadable = fmt.Errorf("invalid interface type, unparsable data type: %v", err)
+			v.Unreadable = fmt.Errorf("invalid interface type, unparsable data type (typestring: %v / typename: %v): %v", typestring, typename, err)
 			return
 		}
 
